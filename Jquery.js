@@ -17,13 +17,17 @@ var fruits = ["Apple", "Apple1", "Apple2", "Banana", "Grapes", "Guava",
 
 $("document").ready(function() {
 
-    $("#startGame").click(function() {
-        if (play == true) location.reload();
+    $("#startGame").click(() => {
+        if (play == true) {
+            location.reload();
+            // $("#gameOver").hide();
+        }
         else {
             $("#gameOver").hide(); // Hide the Game Over box
             play = true;
             score = 0; //set initial score to 0
             $("#scoreVal").html(score);
+            $(".container").fadeTo(1, 1);
             trailsLeft = 3;
 
             $("#trials").show();
@@ -34,7 +38,7 @@ $("document").ready(function() {
         }
     });
 
-    $("#fruit").mouseover(function() {
+    $("#fruit").mouseover(() => {
         score++;
         $("#scoreVal").html(score); // update the score   
         //$("#slicesound")[1].play();  
@@ -81,7 +85,8 @@ $("document").ready(function() {
                     $("#trials").hide();
     
                     $("#sval").html(score);
-                    $("#gameOver").show();
+                    $("#gameOver").fadeTo(2000, 1);
+                    $(".container").fadeTo(100, 0.4);
                     $("#startGame").html("Start Game");
     
                     play = false;
